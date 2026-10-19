@@ -12,12 +12,19 @@ st.write(
     "冷蔵・冷凍庫の在庫と過去の履歴から、偏りのないメニューをAIが提案します！"
 )
 
-# --- サイドバー：APIキーの設定 ---
+# --- 自動でAPIキーを読み込む設定 ---
+try:
+  api_key_input = st.secrets["GEMINI_API_KEY"]
+except Exception:
+  api_key_input = ""
+  st.warning("⚠️ StreamlitのSecretsに APIキー が設定されていません。")
+
+# サイドバーには説明だけを表示する
 with st.sidebar:
-  st.header("🔑 設定")
-  api_key_input = st.text_input("Google Gemini APIキー", type="password")
-  st.markdown("---")
-  st.info("アプリのURLを家族のスマホに共有すれば、全員で使えます！")
+  st.header("🔑 設定完了")
+  st.info(
+      "APIキーは自動で適用されています。アプリのURLを家族のスマホに共有すれば、全員でそのまま使えます！"
+  )
 
 # CSVファイルの保存パス
 HISTORY_FILE = "cooking_history.csv"
