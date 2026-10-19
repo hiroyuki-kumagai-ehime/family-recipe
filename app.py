@@ -15,10 +15,7 @@ st.write(
 # --- サイドバー：APIキーの設定 ---
 with st.sidebar:
   st.header("🔑 設定")
-  api_key_input = st.text_input(
-      "Google Gemini APIキー", type="password", help="Google AI"
-                                                " Studioで取得したキーを入力"
-  )
+  api_key_input = st.text_input("Google Gemini APIキー", type="password")
   st.markdown("---")
   st.info("アプリのURLを家族のスマホに共有すれば、全員で使えます！")
 
